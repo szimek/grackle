@@ -3,6 +3,14 @@ module Grackle
   #Returned by methods which retrieve data from the API
   class TwitterStruct < OpenStruct
     attr_accessor :id
+
+    def to_hash
+      @table.merge(:id => id)
+    end
+
+    def [](attr)
+      to_hash[attr.to_sym]
+    end
   end
 
   #Raised by methods which call the API if a non-200 response status is received 
