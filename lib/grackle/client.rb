@@ -16,6 +16,14 @@ module Grackle
     def attributes
       to_hash.keys
     end
+
+    def has_key?(key)
+      to_hash.has_key?(key.to_sym)
+    end
+
+    alias :key? :has_key?
+    alias :include? :has_key?
+    alias :member? :has_key?
   end
 
   #Raised by methods which call the API if a non-200 response status is received 

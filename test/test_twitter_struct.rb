@@ -21,6 +21,22 @@ class TestTwitterStruct < Test::Unit::TestCase
     assert_equal twitter_hash.keys, twitter_struct.attributes
   end
 
+  def test_has_key_method
+    assert twitter_struct.has_key?(:id)
+  end
+
+  def test_key_alias_to_has_key_method
+    assert twitter_struct.key?(:id)
+  end
+
+  def test_include_alias_to_has_key_method
+    assert twitter_struct.include?(:id)
+  end
+
+  def test_member_alias_to_has_key_method
+    assert twitter_struct.member?(:id)
+  end
+  
   private
   def twitter_hash(options={})
     {:id => 123, :screen_name => 'twitterman'}.merge(options)
