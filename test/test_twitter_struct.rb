@@ -17,6 +17,10 @@ class TestTwitterStruct < Test::Unit::TestCase
     assert_equal twitter_hash[:id], twitter_struct[:id]
   end
 
+  def test_attributes_method
+    assert_equal twitter_hash.keys, twitter_struct.attributes
+  end
+
   private
   def twitter_hash(options={})
     {:id => 123, :screen_name => 'twitterman'}.merge(options)

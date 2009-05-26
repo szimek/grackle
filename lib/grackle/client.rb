@@ -1,3 +1,4 @@
+require 'forwardable'
 module Grackle
   
   #Returned by methods which retrieve data from the API
@@ -10,6 +11,10 @@ module Grackle
 
     def [](attr)
       to_hash[attr.to_sym]
+    end
+
+    def attributes
+      to_hash.keys
     end
   end
 
