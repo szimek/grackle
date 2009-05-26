@@ -1,4 +1,3 @@
-require 'forwardable'
 module Grackle
   
   #Returned by methods which retrieve data from the API
@@ -6,7 +5,7 @@ module Grackle
     attr_accessor :id
 
     def to_hash
-      @table.merge(:id => id)
+      @id ? @table.merge(:id => @id) : @table
     end
 
     def [](attr)
@@ -19,6 +18,12 @@ module Grackle
 
     def has_key?(key)
       to_hash.has_key?(key.to_sym)
+    end
+
+    def to_s
+      string = super
+      string = string.insert(string.index(" "), " id=#{@id}") if @id
+      string
     end
 
     alias :key? :has_key?
